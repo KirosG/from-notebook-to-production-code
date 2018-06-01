@@ -1,0 +1,143 @@
+\documentclass[12pt,t]{beamer}
+\usetheme{Rochester}
+\usepackage{pythonhighlight}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usecolortheme{whale}
+\newcommand{\bi}{\begin{itemize}}                                 % begin itemize
+\newcommand{\ei}{\end{itemize}}                                   % end itemize
+\newcommand{\be}{\begin{enumerate}}                               % begin itemize
+\newcommand{\ee}{\end{enumerate}}                                 % end itemize
+\newcommand*{\ig}[2]{{\centering\includegraphics[#1]{#2}\par}}    % include graphics
+\newcommand{\txt}{\texttt}										  % texttt
+
+\setbeamercolor{normal text}{fg=black}
+\setbeamerfont{normal text}{size=\normalsize}
+\setbeamercolor{title text}{fg=black}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamercolor{section in toc}{fg=black}
+
+\title[FNTPC]{From Notebook to Production Code}
+%\subtitle{Numbers Handwritten by a Computer}
+\author[Messier]{Christopher Messier}
+\institute[DSI-DC]{General Assembly\\Washington, DC}
+%\date{\today}}
+
+\begin{document}
+\linespread{1.5}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%%% Outline
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+\begin{frame}{Overview}
+	\tableofcontents
+\end{frame}
+
+\begin{frame}{What's wrong with a Notebook?}
+	An important tool, but have disadvantages
+	\begin{itemize}
+		\item Non-executable
+		\item No returns
+		\item JavaScript Bloat (\emph{ewwww})
+		\item \emph{slow}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What won't be covered}
+	There's limited time available so we'll be skipping over...
+    \begin{itemize}
+	    \item Optimization
+	    \item Unit Testing
+		\item Packaging
+		\item So much more...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Getting Started}
+	We'll be working with the notebook found here:
+	\small{\texttt{github.com/messiest/from-notebook-to-production-code}}
+	\begin{itemize}
+		\item What it is:
+		\begin{itemize}
+			\item A quick introduction to \texttt{PyTorch}
+			\item Implementation of the LeNet
+			\item Convolutional Neural Network on \emph{MNIST}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Code Conversion}
+
+\begin{frame}{Converting Your Code}
+	Exporting your code to a Python (\texttt{.py}) file
+	\begin{itemize}
+		\item File $\to$ Download As $\to$ Python (.py)
+		\item Move file from Downloads to the Project directory
+		\item Clean out notebook ''artifacts''
+	\end{itemize}
+\end{frame}
+
+\section{Build File}
+
+\begin{frame}{Build File}
+	Install all packages required for a project
+	\begin{itemize}
+		\item \texttt{requirements.txt} - list of all packages
+		\item Could be either a Python (\texttt{.py}) or Bash (\texttt{.sh}) script
+		\item Ensures that there is a common build for all users
+	\end{itemize}
+\end{frame}
+
+\section{Command Line Interface}
+
+\begin{frame}{Command Line Interface}
+	Interacting with your code through the command line
+	\begin{itemize}
+		\item Makes your code more flexible
+		\item Gives greater control over code behavior
+		\item Provides a common interface for 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\texttt{argparse}}
+	Part of the Python Standard Library (included w/ Python)
+	\begin{itemize}
+		\item Allows you to define custom arguments
+		\item Provides help read-outs by default
+		\item Easy to use, and descriptive
+	\end{itemize}
+\end{frame}
+
+\section{Progress Bar}
+
+\begin{frame}{Progress Bar}
+	Provides a simple way to track your program's progress
+	\begin{itemize}
+		\item Estimate how long your program will run
+		\item Track values of important variables
+		\item Provides a professional look/feel
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\texttt{tqdm}}
+	Provides a wrapper to output progress to command line
+	\begin{itemize}
+		\item Wraps an iterable, and automatically writes output
+		\item Provides a way to customize the progress bar
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile, c]  % image frame
+	\begin{center}
+		\Large{Thank You}
+	\end{center}
+\end{frame}
+
+\end{document}
