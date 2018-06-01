@@ -1,8 +1,10 @@
 \documentclass[12pt,t]{beamer}
 \usetheme{Rochester}
 \usepackage{pythonhighlight}
+\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage[normalem]{ulem}
 \usepackage{amsmath}
 \usecolortheme{whale}
 \newcommand{\bi}{\begin{itemize}}                                 % begin itemize
@@ -19,7 +21,6 @@
 \setbeamercolor{section in toc}{fg=black}
 
 \title[FNTPC]{From Notebook to Production Code}
-%\subtitle{Numbers Handwritten by a Computer}
 \author[Messier]{Christopher Messier}
 \institute[DSI-DC]{General Assembly\\Washington, DC}
 %\date{\today}}
@@ -40,13 +41,66 @@
 	\tableofcontents
 \end{frame}
 
-\begin{frame}{What's wrong with a Notebook?}
-	An important tool, but have disadvantages
+\begin{frame}{About Me (Chris Messier)}
 	\begin{itemize}
-		\item Non-executable
-		\item No returns
-		\item JavaScript Bloat (\emph{ewwww})
-		\item \emph{slow}
+		\item Data Scientist at MainStreet Bank
+		\item BAH Data Science Fundamentals IA
+		\item Background in academic Economics
+		\item Research Interests
+		\begin{itemize}
+			\item NLP
+			\item Computer Vision
+			\item Probabilistic Programming
+			\item Graphical Models
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What Does a Data Scientist \emph{Produce}?}
+	\begin{itemize}
+		\item Analytics
+		\begin{itemize}
+			\item Explaining the data and giving recommendations
+		\end{itemize}
+		\pause
+		\item Research
+		\begin{itemize}
+			\item Develop a deep understanding of a topic given the data
+		\end{itemize}
+		\pause
+		\item Solutions
+		\begin{itemize}
+			\item Developing software that enables data-driven solutions
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What Is Production Code?}
+	\emph{Production Code} is...
+	\begin{itemize}
+		\item Code used in a software product
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Why Worry About Production Code?}
+	Production
+\end{frame}
+
+\begin{frame}{What will be covered}
+	\begin{itemize}
+		\item Using the commandline
+		\begin{itemize}
+			\item bash profiles/scripting
+		\end{itemize}
+		\item Converting Code
+		\begin{itemize}
+			\item Notebook $\to$ Python files
+		\end{itemize}
+		\item Best Practices
+		\begin{itemize}
+			\item Project structure
+			\item Code style
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -60,20 +114,91 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Getting Started}
-	We'll be working with the notebook found here:
-	\small{\texttt{github.com/messiest/from-notebook-to-production-code}}
+\begin{frame}{Why the preference for Mac?}
 	\begin{itemize}
-		\item What it is:
+		\item \sout{Aesthetics?}
+		\item \sout{Hardware?}
+		\item UNIX operating system
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{UNIX}
+	\begin{itemize}
+		\item A (large) family of multi-task operating systems
+		\item Started development in 1969 at Bell Labs
+		\item The foundation for all Linux flavors
+		\item macOS is the most installed UNIX base
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{UNIX \emph{cont.}}
+	Linux is the choice of most production workstations/servers. What does this mean?
+	\begin{itemize}
+		\item wide user/support base
+		\item similar file systems for development/deployment
+		\item similar backends/core libraries
+		\item minimal changes between dev/deploy
+		\item common interfaces (\emph{bash})
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{bash}
+	A UNIX shell command language
+	\begin{itemize}
+		\item Default login shell for macOS and most Linux
+		\item Defines the interactions with the command line
+		\item Enables you to...
 		\begin{itemize}
-			\item A quick introduction to \texttt{PyTorch}
-			\item Implementation of the LeNet
-			\item Convolutional Neural Network on \emph{MNIST}
+			\item Navigate the file system
+			\item Launch programs
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{bash profile}
+	A way to customize your bash environment
+	\begin{itemize}
+		\item customize aesthetics
+		\item create shortcuts
+	\end{itemize}
+	Your bash profile can be found at:
+	\begin{itemize}
+		\item \url{~/.bash_profile}  % url is convenient for file paths as well
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Getting Started}
+	We'll be working with the project here:
+	\small{\url{www.github.com/messiest/pytorch-image-classifiers}}
+	\begin{itemize}
+		\item What it is:
+		\begin{itemize}
+			\item An implementation of the LeNet on \emph{MNIST} data
+			\item An implementation of the GoogLeNet on \emph{CIFAR10} data
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Accessing the Example Code}
+	The code is already included as a submodule to this repo.
+	To populate the \texttt{pytorch-image-classifiers/} directory use the following commands:
+	\begin{itemize}
+		\item \texttt{git init submodule}
+		\item \texttt{git submodule update}
+	\end{itemize}
+\end{frame}
+
 \section{Code Conversion}
+
+\begin{frame}{What's wrong with a Notebook?}
+	An important tool, but have disadvantages
+	\begin{itemize}
+		\item Non-executable
+		\item No returns
+		\item JavaScript Bloat (\emph{ewwww})
+		\item "\emph{slow}"
+	\end{itemize}
+\end{frame}
 
 \begin{frame}{Converting Your Code}
 	Exporting your code to a Python (\texttt{.py}) file
@@ -91,11 +216,12 @@
 	\begin{itemize}
 		\item \texttt{requirements.txt} - list of all packages
 		\item Could be either a Python (\texttt{.py}) or Bash (\texttt{.sh}) script
-		\item Ensures that there is a common build for all users
+		\item Ensures that there is a common environment for all users
+		\item Good time to use a \emph{virtual environment}
 	\end{itemize}
 \end{frame}
 
-\section{Command Line Interface}
+\section{Command Line Interfaces}
 
 \begin{frame}{Command Line Interface}
 	Interacting with your code through the command line
@@ -115,7 +241,7 @@
 	\end{itemize}
 \end{frame}
 
-\section{Progress Bar}
+\section{Bonus Features}
 
 \begin{frame}{Progress Bar}
 	Provides a simple way to track your program's progress
