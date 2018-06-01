@@ -1,0 +1,3 @@
+[submodule "pytorch-image-classifiers"]
+	path = pytorch-image-classifiers
+	url = https://github.com/messiest/pytorch-image-classifiers.git
