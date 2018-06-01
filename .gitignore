@@ -1,7 +1,7 @@
 .DS_Store
 data/
 notes.md
-tex/
+# tex/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
